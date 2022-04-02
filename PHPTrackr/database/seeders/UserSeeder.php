@@ -25,5 +25,11 @@ class UserSeeder extends Seeder
             'role' => "Admin"
         ]);
         \App\Models\User::factory(10)->create();
+        User::create([
+            'name' => 'Admin',
+            'email' => 'admin@gmail.com',
+            'password' => bcrypt('admin'),
+            'role' => "Admin"
+        ]);
     }
 }

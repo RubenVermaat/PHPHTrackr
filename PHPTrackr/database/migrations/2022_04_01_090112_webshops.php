@@ -13,9 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('packages', function (Blueprint $table) {
-            $table->id();
-            $table->string('webshopName');
+        Schema::create('webshops', function (Blueprint $table) {
+            $table->string('name')->primary();
+            $table->string('street');
+            $table->integer('housenumber');
             $table->timestamps();
         });
     }
@@ -27,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('packages');
+        Schema::dropIfExists('webshops');
     }
 };

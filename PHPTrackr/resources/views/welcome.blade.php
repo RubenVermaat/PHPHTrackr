@@ -1,3 +1,2 @@
-<x-layout>
-
-</x-layout>
+<x-app-layout>
+</x-app-layout>
