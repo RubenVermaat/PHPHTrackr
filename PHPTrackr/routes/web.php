@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\PackageController;
+use App\Models\Package;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,5 +22,19 @@ Route::get('/', function () {
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
+
+Route::get('/', function () {
+    $data = Package::orderBy('created_at', 'asc')->get();
+
+    return view('adminPanel', [
+        'packages' => $data
+    ]);
+})->name('adminPanel');
+
+// Route::resource('/adminPanel', PackageController::class);
+// Route::get('/adminPanel', function () {
+//     return view('adminPanel');
+// })->name('adminPanel');
+
 
 require __DIR__.'/auth.php';
