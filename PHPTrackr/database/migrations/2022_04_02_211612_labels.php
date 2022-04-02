@@ -17,6 +17,8 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('packageId');
             $table->string('shopName');
+            $table->string('firstname');
+            $table->string('surname');
             $table->timestamps();
         });
         Schema::table('labels', function (Blueprint $table) {
