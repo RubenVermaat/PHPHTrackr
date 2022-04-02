@@ -17,7 +17,20 @@ class RoleSeeder extends Seeder
     {   
         Roles::create([
             'name' => 'Admin', 
-            'description' => 'is nog steeds admin' 
+            'description' => 'lees en scrhijf rechten + more ' 
+            
+        ]);
+
+        Roles::create([
+            'name' => 'Adminstratief', 
+            'description' => 'lees en scrhijf rechten' 
+            
+        ]);
+
+        Roles::create([
+            'name' => 'Inpakker', 
+            'description' => 'lees rechten' 
+            
         ]);
    
     }
