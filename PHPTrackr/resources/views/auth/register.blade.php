@@ -23,12 +23,13 @@
             <!-- Password -->
             <div class="mt-4">
                 <x-label for="role" :value="__('Role')" />
-
-                <select id="role" class="block mt-1 w-full" name="role" required>
+                <select name="role" class="block mt-1 w-full" required>
                     <option selected disabled>Select a Role</option>
-                    
+                    @foreach($data as $role)
+                        <option value="{{ $role }}">{{ $role }}</option>
+                    @endforeach
                 </select>
-                
+
             </div>
 
 
