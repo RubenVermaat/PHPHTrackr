@@ -16,14 +16,13 @@ return new class extends Migration
         Schema::create('labels', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('packageId');
-            $table->string('shopName');
-            $table->string('firstname');
-            $table->string('surname');
+            $table->string('shop');
+            $table->enum('status', ['Aangemeld', 'Uitgeprint', 'Afgeleverd', 'Sorteercentrum', 'Onderweg']);
             $table->timestamps();
         });
         Schema::table('labels', function (Blueprint $table) {
             $table->foreign('packageId')->references('id')->on('packages');
-            $table->foreign('shopName')->references('name')->on('webshops');
+            $table->foreign('shop')->references('name')->on('webshops');
         });
     }
 

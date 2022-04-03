@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LabelController;
 use App\Http\Controllers\PackageController;
 use App\Http\Middleware\MustBeAdmin;
 use App\Models\Package;
@@ -74,29 +75,17 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
-
-
-
 Route::controller(PackageController::class)->group(function () {
-    Route::get('admin/adminpanel', 'create', function () {
-        return view('adminpanel');
-    })->middleware(['auth'])->name('adminpanel');
+    Route::get('adminviews/adminPanel', 'panelIndex')->name('adminPanel');
+    Route::get('packages/create', 'create')->name('packageCreate');
+    Route::post('packages/store', 'store')->name('packageStore');
+    Route::get('packages/index', 'index')->name('packageIndex');
 });
 
-/*
-Route::get('/', function () {
-    $data = Package::orderBy('created_at', 'asc')->get();
-
-    return view('adminPanel', [
-        'packages' => $data
-    ]);
-})->name('adminPanel');
-*/
-// Route::resource('/adminPanel', PackageController::class);
-// Route::get('/adminPanel', function () {
-//     return view('adminPanel');
-// })->name('adminPanel');
-
+Route::controller(LabelController::class)->group(function () {
+    Route::get('/labels/create/{id}', 'store')->name('labelCreate');
+    Route::get('/labels/index', 'index')->name('labelIndex');
+});
 
 
 require __DIR__ . '/channels.php';

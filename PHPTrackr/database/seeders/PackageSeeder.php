@@ -16,13 +16,25 @@ class PackageSeeder extends Seeder
     public function run()
     {
         Package::create([
-            'webshopName' => 'Package1'
+            'email' => 'James@gmail.com',
+            'firstname' => 'James',
+            'surname' => 'Gordon',
+            'labelGenerated' => true
         ]);
         Package::create([
-            'webshopName' => 'Package2'
+            'email' => 'Pieter@gmail.com',
+            'firstname' => 'Pieter',
+            'surname' => 'van Dijk'
         ]);
         Package::create([
-            'webshopName' => 'Package3'
+            'email' => 'Ruben@gmail.com',
+            'firstname' => 'Ruben',
+            'surname' => 'Berg'
+        ]);
+        Package::create([
+            'email' => 'Natalja@gmail.com',
+            'firstname' => 'Natalja',
+            'surname' => 'Pieterson'
         ]);
     }
 }

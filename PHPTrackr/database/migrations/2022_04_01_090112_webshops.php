@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('webshops', function (Blueprint $table) {
             $table->string('name')->primary();
+            $table->string('city');
             $table->string('street');
             $table->integer('housenumber');
             $table->timestamps();
