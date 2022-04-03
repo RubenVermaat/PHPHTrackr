@@ -40,6 +40,7 @@ class RegisteredUserController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'remember_token' => ['string'],
             'role' => ['required', 'string']
         ]);
         
@@ -47,14 +48,15 @@ class RegisteredUserController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'remember_token' => $request->_token,
             'role' => $request->role,
         ]);
       
 
         event(new Registered($user));
 
-        Auth::login($user);
+        Auth()->login($user);
 
-        return redirect(RouteServiceProvider::HOME);
+        return redirect('/dashboard');
     }
 }

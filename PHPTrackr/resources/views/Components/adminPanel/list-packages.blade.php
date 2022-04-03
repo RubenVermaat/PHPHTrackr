@@ -1,6 +1,7 @@
 <table>
 
 </table>
+
 @foreach ($data as $package)
-    {{ $module->webshopName }}
+    {{ $package->webshopName }}
 @endforeach

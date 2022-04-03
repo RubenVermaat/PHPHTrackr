@@ -22,6 +22,7 @@ class User extends Authenticatable
         'email',
         'password',
         'role',
+        'remember_token',
     ];
 
     /**
@@ -31,7 +32,7 @@ class User extends Authenticatable
      */
     protected $hidden = [
         'password',
-        'remember_token',
+        
     ];
 
     /**
@@ -43,8 +44,29 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
     public $timestamps = false;
+    
     public function role()
     {
         return $this->belongsTo(Roles::class);
     }
+
+    public function getName(){
+        return $this->name;
+    }
+   
+    public function getRole(){
+        return $this->role;
+    }
+   
+
+    public function hasRole($name, $role)
+    {
+        if($this->where('role', $role)->where('name', $name)) {
+            return true;
+        }
+        return false;
+        
+    }
+
+    
 }
