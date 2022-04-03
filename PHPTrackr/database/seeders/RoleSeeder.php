@@ -32,6 +32,12 @@ class RoleSeeder extends Seeder
             'description' => 'lees rechten' 
             
         ]);
+
+        Roles::create([
+            'name' => 'Ontvanger', 
+            'description' => 'geen admin rechten' 
+            
+        ]);
    
     }
 }

@@ -8,7 +8,7 @@ use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class AuthenticatedSessionController extends Controller
+class LoginUserController extends Controller
 {
     /**
      * Display the login view.
@@ -28,6 +28,7 @@ class AuthenticatedSessionController extends Controller
      */
     public function store(LoginRequest $request)
     {
+
         $request->authenticate();
 
         $request->session()->regenerate();

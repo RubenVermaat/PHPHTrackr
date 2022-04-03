@@ -7,9 +7,10 @@ use Illuminate\Http\Request;
 
 class PackageController extends Controller
 {
-    public function index()
+    public function create()
     {
+        
         $data = Package::paginate(6);
-        return view('adminPanel', ['data' => $data]);
+        return view('adminpanel', ['data'=>$data]);
     }
 }
