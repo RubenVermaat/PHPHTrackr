@@ -10,6 +10,7 @@ use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
+    
     use HasApiTokens, HasFactory, Notifiable;
 
     /**
@@ -35,6 +36,10 @@ class User extends Authenticatable
         
     ];
 
+    protected $attributes = [
+        'role' => 'Ontvanger',
+     ];
+
     /**
      * The attributes that should be cast.
      *
@@ -58,14 +63,46 @@ class User extends Authenticatable
         return $this->role;
     }
    
+    public function getId(){
+        return $this->id;
+    }
 
-    public function hasRole($name, $role)
-    {
-        if($this->where('role', $role)->where('name', $name)) {
+    
+    public function isAdmin($id){
+        if($this->where('id', $id)->pluck('role')->first() == 'Admin') {
             return true;
-        }
-        return false;
-        
+        }else return false;
+    }
+
+    public function isReceiver($id){
+        if($this->where('id', $id)->pluck('role')->first() == 'Admin' || 
+        $this->where('id', $id)->pluck('role')->first() == 'Ontvanger') {
+            return true;
+        }else return false;
+    }
+
+    
+    public function canWrite($id){
+        if($this->where('id', $id)->pluck('role')->first() == 'Admin' || 
+        $this->where('id', $id)->pluck('role')->first() == 'Adminstratief') {
+            return true;
+        }else return false;
+    }
+
+    public function canRead($id){
+        if($this->where('id', $id)->pluck('role')->first() == 'Admin' || 
+        $this->where('id', $id)->pluck('role')->first() == 'Adminstratief' || 
+        $this->where('id', $id)->pluck('role')->first() == 'Inpakker') {
+            return true;
+        }else return false;
+    }
+
+    public function hasRole($id, $role)
+    {
+        if($this->where('role', $role)->where('id', $id)) {
+            return true;
+        }else return false;
+
     }
 
     
