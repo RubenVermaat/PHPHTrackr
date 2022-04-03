@@ -19,7 +19,7 @@
 
                     @if(auth()->user() != null)
                     @if(auth()->user()->isAdmin(auth()->user()->getId()))
-                    <x-nav-link :href="route('adminpanel')" :active="request()->routeIs('adminpanel')">
+                    <x-nav-link :href="route('adminPanel')" :active="request()->routeIs('adminPanel')">
                         {{ __('Admin panel') }}
                     </x-nav-link>
                     @endif
