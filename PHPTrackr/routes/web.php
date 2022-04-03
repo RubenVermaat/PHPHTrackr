@@ -85,6 +85,7 @@ Route::controller(PackageController::class)->group(function () {
 Route::controller(LabelController::class)->group(function () {
     Route::get('/labels/create/{id}', 'store')->name('labelCreate');
     Route::get('/labels/index', 'index')->name('labelIndex');
+    Route::post('labels/search', 'search')->name('labelSearch');
 });
 
 

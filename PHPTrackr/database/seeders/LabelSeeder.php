@@ -17,7 +17,11 @@ class LabelSeeder extends Seeder
     {
         Label::create([
             'packageId' => '1',
-            'shop' => 'Dierenwinkel'
+            'shop' => 'Koffieshop'
+        ]);
+        Label::create([
+            'packageId' => '2',
+            'shop' => 'Fietsenwinkel'
         ]);
     }
 }

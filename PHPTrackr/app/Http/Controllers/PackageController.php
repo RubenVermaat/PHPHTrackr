@@ -16,9 +16,10 @@ class PackageController extends Controller
     }
     public function index()
     {
-        $packages = Package::all();
-        return view('packages/index', ['packages' => $packages]);
+        $packages = Package::all();;
+        return view('packages.index', ['packages' => $packages]);
     }
+
     public function show($id)
     {
         $package = Package::find($id);

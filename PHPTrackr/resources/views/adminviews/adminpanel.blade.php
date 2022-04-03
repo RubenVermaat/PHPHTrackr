@@ -10,14 +10,14 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
                     <a href="/packages/create">Create package </a>
-                    <a href="/packages/index">All packages </a>
                     <x-adminPanel.list-packages :data="$packages">
 
                     </x-adminPanel.list-packages>
-                    <a href="/labels/index">All labels </a>
+                    <a href="/packages/index">All packages </a>
                     <x-adminPanel.list-labels :data="$labels">
 
                     </x-adminPanel.list-labels>
+                    <a href="/labels/index">All labels </a>
                 </div>
             </div>
         </div>
