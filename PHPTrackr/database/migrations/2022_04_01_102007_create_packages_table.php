@@ -15,7 +15,10 @@ return new class extends Migration
     {
         Schema::create('packages', function (Blueprint $table) {
             $table->id();
-            $table->string('webshopName');
+            $table->string('email');
+            $table->string('firstname');
+            $table->string('surname');
+            $table->boolean('labelGenerated')->default(false);
             $table->timestamps();
         });
     }

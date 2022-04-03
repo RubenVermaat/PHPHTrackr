@@ -4,15 +4,20 @@
             {{ __('Admin panel') }}
         </h2>
     </x-slot>
-  
+
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
-
-                    <x-adminPanel.list-packages :data="$data">
+                    <a href="/packages/create">Create package </a>
+                    <a href="/packages/index">All packages </a>
+                    <x-adminPanel.list-packages :data="$packages">
 
                     </x-adminPanel.list-packages>
+                    <a href="/labels/index">All labels </a>
+                    <x-adminPanel.list-labels :data="$labels">
+
+                    </x-adminPanel.list-labels>
                 </div>
             </div>
         </div>
