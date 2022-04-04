@@ -21,5 +21,17 @@ class WebshopsSeeder extends Seeder
             'street' => 'Bloemendaalseweg',
             'housenumber' => '5',
         ]);
+        Webshop::create([
+            'name' => 'Koffieshop',
+            'city' => 'Den Bosch',
+            'street' => 'EenStraatInDenBosch',
+            'housenumber' => '69',
+        ]);
+        Webshop::create([
+            'name' => 'Fietsenwinkel',
+            'city' => 'Rotterdan',
+            'street' => 'Blaak',
+            'housenumber' => '420',
+        ]);
     }
 }

@@ -17,12 +17,13 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('packageId');
             $table->string('shop');
-            $table->enum('status', ['Aangemeld', 'Uitgeprint', 'Afgeleverd', 'Sorteercentrum', 'Onderweg']);
+            $table->string('status');
             $table->timestamps();
         });
         Schema::table('labels', function (Blueprint $table) {
             $table->foreign('packageId')->references('id')->on('packages');
             $table->foreign('shop')->references('name')->on('webshops');
+            $table->foreign('status')->references('name')->on('statuses');
         });
     }
 

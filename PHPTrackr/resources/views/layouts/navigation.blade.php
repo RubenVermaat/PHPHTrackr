@@ -18,12 +18,18 @@
                     </x-nav-link>
 
                     @if(auth()->user() != null)
-                    @if(auth()->user()->isAdmin(auth()->user()->getId()))
-                    <x-nav-link :href="route('adminPanel')" :active="request()->routeIs('adminPanel')">
-                        {{ __('Admin panel') }}
+                        @if(auth()->user()->isAdmin(auth()->user()->getId()))
+                            <x-nav-link :href="route('adminPanel')" :active="request()->routeIs('adminPanel')">
+                                {{ __('Admin panel') }}
+                            </x-nav-link>
+                        @endif
+                    @endif
+                    <x-nav-link :href="route('packageIndex')" :active="request()->routeIs('packageIndex')">
+                        {{ __('Packages') }}
                     </x-nav-link>
-                    @endif
-                    @endif
+                    <x-nav-link :href="route('labelIndex')" :active="request()->routeIs('labelIndex')">
+                        {{ __('Labels') }}
+                    </x-nav-link>
                 </div>
             </div>
 

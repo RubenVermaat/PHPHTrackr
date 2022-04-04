@@ -16,9 +16,23 @@ class PackageController extends Controller
     }
     public function index()
     {
-        $packages = Package::all();
-        return view('packages/index', ['packages' => $packages]);
+        $packages = Package::sortable()->paginate(10);
+        return view('packages.index', ['packages' => $packages]);
     }
+
+    public function search(Request $request)
+    {
+        $searchInput = $request->input('search');
+
+        if (!empty($searchInput)) {
+            $packages = Package::where('firstname', '=', $searchInput)->orWhere('surname', '=', $searchInput)->orWhere('email', '=', $searchInput)->sortable()->paginate(10);
+        } else {
+            $packages = Package::sortable()->paginate(10);
+        }
+
+        return view('packages.index', ['packages' => $packages]);
+    }
+
     public function show($id)
     {
         $package = Package::find($id);
