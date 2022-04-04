@@ -84,7 +84,7 @@ Route::middleware(['employeeRead'])->group(function () {
 
 // all pages for recievers
 Route::middleware(['receiver'])->group(function () {
-    Route::get('customerview', [CustomerViewController::class, 'show'])->name('customerview');
+    Route::get('customerview', [CustomerViewController::class, 'index'])->name('customerview');
 });
 Route::get('/dashboard', function () {
     return view('dashboard');
