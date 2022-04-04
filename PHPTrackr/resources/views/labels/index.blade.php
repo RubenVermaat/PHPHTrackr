@@ -22,7 +22,7 @@
                         </select>
                         <input type="submit" value="Search">
                     </form>
-                    <x-adminPanel.list-labels :data="$labels">
+                    <x-adminPanel.list-labels :data="$labels" :sortable=true>
 
                     </x-adminPanel.list-labels>
                 </div>

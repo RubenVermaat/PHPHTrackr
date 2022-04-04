@@ -36,5 +36,45 @@ class PackageSeeder extends Seeder
             'firstname' => 'Natalja',
             'surname' => 'Pieterson'
         ]);
+        Package::create([
+            'email' => 'Lucas@gmail.com',
+            'firstname' => 'Lucas',
+            'surname' => 'Achterdocht'
+        ]);
+        Package::create([
+            'email' => 'Marc@gmail.com',
+            'firstname' => 'Marc',
+            'surname' => 'met een C'
+        ]);
+        Package::create([
+            'email' => 'Nathan@gmail.com',
+            'firstname' => 'Nathan',
+            'surname' => 'Ad Astra'
+        ]);
+        Package::create([
+            'email' => 'Robbin@gmail.com',
+            'firstname' => 'Robbin',
+            'surname' => 'Blaak'
+        ]);
+        Package::create([
+            'email' => 'Mariska@gmail.com',
+            'firstname' => 'Mariska',
+            'surname' => 'Samsung'
+        ]);
+        Package::create([
+            'email' => 'Gert@gmail.com',
+            'firstname' => 'Gert',
+            'surname' => 'Manhout'
+        ]);
+        Package::create([
+            'email' => 'James@gmail.com',
+            'firstname' => 'James',
+            'surname' => 'Pieterson'
+        ]);
+        Package::create([
+            'email' => 'Koen@gmail.com',
+            'firstname' => 'Koen',
+            'surname' => 'van der Groen'
+        ]);
     }
 }

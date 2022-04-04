@@ -10,7 +10,7 @@ class LabelController extends Controller
 {
     public function index()
     {
-        $labels = Label::all();
+        $labels = Label::sortable()->paginate(10);
         return view('/labels.index', ['labels' => $labels]);
     }
     public function search(Request $request)
@@ -19,13 +19,13 @@ class LabelController extends Controller
         $searchStatus = $request->status;
 
         if (!empty($searchInput) && $searchStatus != "----") {
-            $packages = Label::where('shop', '=', $searchInput)->where('status', '=', $searchStatus)->get();
+            $packages = Label::where('shop', '=', $searchInput)->where('status', '=', $searchStatus)->sortable()->paginate(10);
         } else if (!empty($searchInput)) {
-            $packages = Label::where('shop', '=', $searchInput)->get();
+            $packages = Label::where('shop', '=', $searchInput)->sortable()->paginate(10);
         } else if ($searchStatus != "----"){
-            $packages = Label::where('status', '=', $searchStatus)->get();
+            $packages = Label::where('status', '=', $searchStatus)->sortable()->paginate(10);
         }else{
-            $packages = Label::all();
+            $packages = Label::sortable()->paginate(10);
         }
 
         return view('labels.index', ['labels' => $packages]);
