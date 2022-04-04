@@ -14,9 +14,9 @@
                         <x-button for="search">find</x-button>
                     </div>
 
-                    <x-table>
+                    <x-klantPanel.table :data="$data">
 
-                    </x-table>
+                    </x-klantPanel.table>
 
                     <div class="mt-8 mb-8 h-8">
                         
