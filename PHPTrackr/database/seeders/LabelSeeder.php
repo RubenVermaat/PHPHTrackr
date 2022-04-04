@@ -17,11 +17,13 @@ class LabelSeeder extends Seeder
     {
         Label::create([
             'packageId' => '1',
-            'shop' => 'Koffieshop'
+            'shop' => 'Koffieshop',
+            'status' => 'Aangemeld'
         ]);
         Label::create([
             'packageId' => '2',
-            'shop' => 'Fietsenwinkel'
+            'shop' => 'Fietsenwinkel',
+            'status' => 'Aangemeld'
         ]);
     }
 }

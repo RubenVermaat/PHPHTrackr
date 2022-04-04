@@ -51,18 +51,34 @@ Route::middleware('auth')->group(function () {
 
 // admin exclusive pages 
 Route::middleware(['adminRole'])->group(function () {
+    Route::controller(PackageController::class)->group(function () {
+        Route::get('adminviews/adminPanel', 'panelIndex')->name('adminPanel');
+    });
+
 });
 
 // all pages employee write access
 Route::middleware(['employeeWrite'])->group(function () {
+    Route::controller(PackageController::class)->group(function () {
+        Route::get('packages/create', 'create')->name('packageCreate');
+        Route::post('packages/store', 'store')->name('packageStore');
+    });
+
     Route::get('/', function () {
         return view('welcome');
     });
 });
 // all pages employee read access
 Route::middleware(['employeeRead'])->group(function () {
-  
-    
+    Route::controller(PackageController::class)->group(function () {
+        Route::get('packages/index', 'index')->name('packageIndex');
+        Route::any('packages/search', 'search')->name('packageSearch');
+    });
+
+    Route::controller(LabelController::class)->group(function () {
+        Route::get('labels/index', 'index')->name('labelIndex');
+        Route::any('labels/search', 'search')->name('labelSearch');
+    });
 });
 
 
@@ -74,20 +90,6 @@ Route::middleware(['receiver'])->group(function () {
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
-
-Route::controller(PackageController::class)->group(function () {
-    Route::get('adminviews/adminPanel', 'panelIndex')->name('adminPanel');
-    Route::get('packages/create', 'create')->name('packageCreate');
-    Route::post('packages/store', 'store')->name('packageStore');
-    Route::get('packages/index', 'index')->name('packageIndex');
-    Route::any('packages/search', 'search')->name('packageSearch');
-});
-
-Route::controller(LabelController::class)->group(function () {
-    Route::get('/labels/create/{id}', 'store')->name('labelCreate');
-    Route::get('/labels/index', 'index')->name('labelIndex');
-    Route::any('labels/search', 'search')->name('labelSearch');
-});
 
 
 require __DIR__ . '/channels.php';
