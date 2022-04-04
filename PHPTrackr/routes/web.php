@@ -80,12 +80,13 @@ Route::controller(PackageController::class)->group(function () {
     Route::get('packages/create', 'create')->name('packageCreate');
     Route::post('packages/store', 'store')->name('packageStore');
     Route::get('packages/index', 'index')->name('packageIndex');
+    Route::any('packages/search', 'search')->name('packageSearch');
 });
 
 Route::controller(LabelController::class)->group(function () {
     Route::get('/labels/create/{id}', 'store')->name('labelCreate');
     Route::get('/labels/index', 'index')->name('labelIndex');
-    Route::post('labels/search', 'search')->name('labelSearch');
+    Route::any('labels/search', 'search')->name('labelSearch');
 });
 
 

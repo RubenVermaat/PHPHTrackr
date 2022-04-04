@@ -13,6 +13,7 @@ class LabelController extends Controller
         $labels = Label::sortable()->paginate(10);
         return view('/labels.index', ['labels' => $labels]);
     }
+    
     public function search(Request $request)
     {
         $searchInput = $request->input('search');
