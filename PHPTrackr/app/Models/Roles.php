@@ -11,7 +11,7 @@ class Roles extends Model
 
     public $timestamps = false;
     protected $fillable = ['name', 'description'];
-    protected $primaryKey = "name";
+    
 
     public function users()
     {
