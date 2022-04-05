@@ -37,7 +37,6 @@ class UserOverviewTest extends DuskTestCase
     }
 
     /** @test */
-
     public function NamesContainingLetterJTest()
     {
         $this->browse(function (Browser $browser) {
@@ -50,4 +49,14 @@ class UserOverviewTest extends DuskTestCase
         });
     }
     
+    /** @test */
+    public function SortStatus()
+    {
+        $this->browse(function (Browser $browser) {
+            $browser->visit('/customerview')
+            ->click('@name')->assertSeeIn('tr.bg-white:nth-child(2) > td:nth-child(1)', 'Natalja')
+            ->click('@status')->assertSeeIn('tr.bg-white:nth-child(2) > td:nth-child(1)', 'Pieter');
+        });
+    }
+
 }
