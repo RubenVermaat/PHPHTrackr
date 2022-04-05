@@ -6,32 +6,30 @@ use App\Models\Label;
 use App\Models\Package;
 use App\Models\Webshop;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use PDF;
 
 class LabelController extends Controller
 {
     public function index()
     {
+        $webshops = DB::table('statuses')->pluck('name');
         $labels = Label::sortable()->paginate(10);
-        return view('/labels.index', ['labels' => $labels]);
+        return view('/labels.index', ['labels' => $labels, 'statuses' => $webshops]);
     }
     
     public function search(Request $request)
     {
-        $searchInput = $request->input('search');
         $searchStatus = $request->status;
+        $webshops = DB::table('statuses')->pluck('name');
 
-        if (!empty($searchInput) && $searchStatus != "----") {
-            $packages = Label::where('shop', '=', $searchInput)->where('status', '=', $searchStatus)->sortable()->paginate(10);
-        } else if (!empty($searchInput)) {
-            $packages = Label::where('shop', '=', $searchInput)->sortable()->paginate(10);
-        } else if ($searchStatus != "----"){
+        if ($searchStatus != null){
             $packages = Label::where('status', '=', $searchStatus)->sortable()->paginate(10);
         }else{
             $packages = Label::sortable()->paginate(10);
         }
 
-        return view('labels.index', ['labels' => $packages]);
+        return view('labels.index', ['labels' => $packages, 'statuses' => $webshops]);
     }
 
     public function show($id)

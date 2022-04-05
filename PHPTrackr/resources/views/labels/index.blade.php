@@ -12,14 +12,11 @@
                     <div class="mt-8 mb-8 h-8">
                         <form method="POST" action="{{ route('labelSearch') }}" > 
                             @csrf
-                            <x-input name="search" placeholder="Search" class="border-gray-200 border h-10 px-5 pr-10 rounded-full text-sm focus:outline-none"></x-input>
                             <select name="status"  class="border-gray-200 border h-10 px-5 pr-10 rounded-full text-sm focus:outline-none">
-                                <option>----</option>
-                                <option>Aangemeld</option>
-                                <option>Uitgeprint</option>
-                                <option>Sorteercentrum</option>
-                                <option>Onderweg</option>
-                                <option>Afgeleverd</option>
+                                    <option selected disabled>Select a Status</option>
+                                    @foreach($statuses as $status)
+                                        <option value="{{ $status }}">{{ $status }}</option>
+                                    @endforeach
                             </select>
                             <input type="submit" value="Search">
                         </form>
