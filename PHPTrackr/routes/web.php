@@ -76,6 +76,7 @@ Route::middleware(['employeeRead'])->group(function () {
     Route::controller(LabelController::class)->group(function () {
         Route::get('labels/index', 'index')->name('labelIndex');
         Route::any('labels/search', 'search')->name('labelSearch');
+        Route::get('labels/pdf/{id}', [LabelController::class, 'exportPDF']);
     });
 });
 

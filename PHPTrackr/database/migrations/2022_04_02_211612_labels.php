@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Carbon\Carbon;
 
 return new class extends Migration
 {
@@ -16,13 +17,12 @@ return new class extends Migration
         Schema::create('labels', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('packageId');
-            $table->string('shop');
-            $table->string('status');
+            $table->string('status')->default('Aangemeld');
+            $table->date('deliveryDate')->default(Carbon::now()->toDateTimeString());
             $table->timestamps();
         });
         Schema::table('labels', function (Blueprint $table) {
             $table->foreign('packageId')->references('id')->on('packages');
-            $table->foreign('shop')->references('name')->on('webshops');
             $table->foreign('status')->references('name')->on('statuses');
         });
     }

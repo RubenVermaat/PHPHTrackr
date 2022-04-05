@@ -3,11 +3,13 @@
 namespace Database\Seeders;
 
 use App\Models\Label;
+use Carbon;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class LabelSeeder extends Seeder
 {
+    
     /**
      * Run the database seeds.
      *
@@ -15,31 +17,26 @@ class LabelSeeder extends Seeder
      */
     public function run()
     {
+        
         Label::create([
             'packageId' => '1',
-            'shop' => 'Koffieshop',
             'status' => 'Aangemeld'
         ]);
         Label::create([
             'packageId' => '2',
-            'shop' => 'Fietsenwinkel',
             'status' => 'Aangemeld'
         ]);
         Label::create([
-            'packageId' => '2',
-            'shop' => 'Dierenwinkel'
+            'packageId' => '2'
         ]);
         Label::create([
-            'packageId' => '2',
-            'shop' => 'Dierenwinkel'
+            'packageId' => '2'
         ]);
         Label::create([
-            'packageId' => '3',
-            'shop' => 'Dierenwinkel'
+            'packageId' => '3'
         ]);
         Label::create([
             'packageId' => '4',
-            'shop' => 'Dierenwinkel',
             'status' => 'Afgeleverd'
         ]);
     }

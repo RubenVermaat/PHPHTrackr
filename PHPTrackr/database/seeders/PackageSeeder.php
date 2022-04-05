@@ -24,7 +24,11 @@ class PackageSeeder extends Seeder
         Package::create([
             'email' => 'Pieter@gmail.com',
             'firstname' => 'Pieter',
-            'surname' => 'van Dijk'
+            'surname' => 'van Dijk',
+            'city' => 'Gouda',
+            'street' => 'Blaak',
+            'housenumber' => '24',
+            'homedelivery' => true
         ]);
         Package::create([
             'email' => 'Ruben@gmail.com',

@@ -15,13 +15,13 @@ class CustomerViewController extends Controller
         if(request('button')){
             $data = DB::table('labels')->join('packages', 'labels.packageId', '=', 'packages.id')
             ->orderBy(request('button'))
-            ->select(['labels.id','packages.firstname', 'packages.email','labels.shop', 'labels.status'])
+            ->select(['labels.id','packages.firstname', 'packages.email', 'packages.shop', 'labels.status'])
             ->paginate(5);
         } else if(request('search')){
            $data = $this->getSearchResult();
         } else{
             $data = DB::table('labels')->join('packages', 'labels.packageId', '=', 'packages.id')
-            ->select(['labels.id','packages.firstname', 'packages.email','labels.shop', 'labels.status'])
+            ->select(['labels.id','packages.firstname', 'packages.email', 'packages.shop', 'labels.status'])
             ->paginate(5);
         }
         
