@@ -63,9 +63,6 @@ Route::middleware(['employeeWrite'])->group(function () {
         Route::post('packages/store', 'store')->name('packageStore');
     });
 
-    Route::get('/', function () {
-        return view('welcome');
-    });
 });
 // all pages employee read access
 Route::middleware(['employeeRead'])->group(function () {
@@ -80,7 +77,9 @@ Route::middleware(['employeeRead'])->group(function () {
     });
 });
 
-
+Route::get('/', function () {
+    return view('welcome');
+});
 
 // all pages for recievers
 Route::middleware(['receiver'])->group(function () {
@@ -88,7 +87,7 @@ Route::middleware(['receiver'])->group(function () {
 });
 Route::get('/dashboard', function () {
     return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+})->name('dashboard');
 
 
 require __DIR__ . '/channels.php';

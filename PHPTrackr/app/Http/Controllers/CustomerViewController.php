@@ -16,7 +16,7 @@ class CustomerViewController extends Controller
             $data = DB::table('labels')->join('packages', 'labels.packageId', '=', 'packages.id')
             ->orderBy(request('name'))
             ->select(['labels.id','packages.firstname', 'packages.email','labels.shop', 'labels.status'])
-            ->paginate(2);
+            ->paginate(5);
         } else if(request('search')){
            
             $data = DB::table('labels')->join('packages', 'labels.packageId', '=', 'packages.id')
@@ -25,11 +25,11 @@ class CustomerViewController extends Controller
             ->orWhere('labels.shop', 'like', '%' . request('search') . '%')
             ->orWhere('labels.status', 'like', '%' . request('search') . '%')
             ->select(['labels.id','packages.firstname', 'packages.email','labels.shop', 'labels.status'])
-            ->paginate(2);
+            ->paginate(5);
         } else{
             $data = DB::table('labels')->join('packages', 'labels.packageId', '=', 'packages.id')
             ->select(['labels.id','packages.firstname', 'packages.email','labels.shop', 'labels.status'])
-            ->paginate(2);
+            ->paginate(5);
         }
         
         return view('customers.index',  ['data' => $data]);
