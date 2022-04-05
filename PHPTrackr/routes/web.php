@@ -66,7 +66,8 @@ Route::middleware(['employeeWrite'])->group(function () {
         
     });
     Route::controller(LabelController::class)->group(function () {
-        Route::get('labels/store/{id}', 'store')->name('packageStore');
+        Route::get('labels/store/{id}', 'store')->name('labelStore');
+        Route::post('labels/storeBulk', 'storeBulk')->name('labelsBulkStore');
     });
 
 });

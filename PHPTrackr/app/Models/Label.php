@@ -14,13 +14,11 @@ class Label extends Model
     protected $fillable = [
         'id',
         'packageId',
-        'shop',
         'status'
     ];
     public $sortable = [
         'id',
         'packageId',
-        'shop',
         'status'
     ];
 

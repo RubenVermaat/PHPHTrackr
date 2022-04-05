@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Label;
 use App\Models\Package;
+use App\Models\Status;
 use App\Models\Webshop;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -13,7 +14,7 @@ class LabelController extends Controller
 {
     public function index()
     {
-        $webshops = DB::table('statuses')->pluck('name');
+        $webshops = Status::pluck('name');
         $labels = Label::sortable()->paginate(10);
         return view('/labels.index', ['labels' => $labels, 'statuses' => $webshops]);
     }
@@ -42,7 +43,19 @@ class LabelController extends Controller
         $package->labelGenerated = true;
         $package->save();
         Label::create(['packageId' => $package->id]);
-        return redirect()->route('adminPanel');
+        return redirect()->route('labelIndex');
+    }
+
+    public function storeBulk(Request $request)
+    {
+        $packages = $request->input('packages');
+        foreach ($packages as $packageId){
+            $package = Package::Find($packageId);
+            $package->labelGenerated = true;
+            $package->save();
+            Label::create(['packageId' => $packageId]);
+        }
+        return redirect()->route('labelIndex');
     }
 
     public function exportPDF($id)

@@ -6,7 +6,7 @@
     </x-slot>
 
     <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+        <div class="mx-auto sm:px-6 lg:px-8" style="width: 2/3;">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
                     <div class="mt-8 mb-8 h-8">
@@ -23,9 +23,12 @@
                         <button class="btn btn-success">Import Packages Data</button>
                     </form>
                     <a href="/packages/create">Create package </a>
-                    <x-adminPanel.list-packages :data="$packages" :sortable="true">
+                    <form action="{{ route('labelsBulkStore')}}" method="POST"> 
+                        @csrf
+                        <x-adminPanel.list-packages :data="$packages" :sortable="true">
 
-                    </x-adminPanel.list-packages>
+                        </x-adminPanel.list-packages> 
+                    </form>
                 </div>
             </div>
         </div>
