@@ -53,11 +53,13 @@ class LabelController extends Controller
         $package = Package::where('id', '=', $label->packageId)->get();
         if (!$package->first()->homeDelivery){
             $shop = Webshop::where('name', '=', $package->first()->shop)->get();
+            $deliveryInfo['where'] = $shop->first()->name;
             $deliveryInfo['city'] = $shop->first()->city;
             $deliveryInfo['street'] = $shop->first()->street;
             $deliveryInfo['housenumber'] = $shop->first()->housenumber;
             $deliveryInfo['statement'] = "Will be delivert at the shop";
         }else{
+            $deliveryInfo['where'] = $package->first()->firstname. " " .$package->first()->surname;
             $deliveryInfo['city'] = $package->first()->city;
             $deliveryInfo['street'] = $package->first()->street;
             $deliveryInfo['housenumber'] = $package->first()->housenumber;

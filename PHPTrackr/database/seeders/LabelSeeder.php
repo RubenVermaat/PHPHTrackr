@@ -3,11 +3,13 @@
 namespace Database\Seeders;
 
 use App\Models\Label;
+use Carbon;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class LabelSeeder extends Seeder
 {
+    
     /**
      * Run the database seeds.
      *
@@ -15,6 +17,7 @@ class LabelSeeder extends Seeder
      */
     public function run()
     {
+        
         Label::create([
             'packageId' => '1',
             'status' => 'Aangemeld'

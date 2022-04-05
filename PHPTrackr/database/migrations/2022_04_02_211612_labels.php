@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('packageId');
             $table->string('status');
+            $table->date('deliveryDate')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamps();
         });
         Schema::table('labels', function (Blueprint $table) {

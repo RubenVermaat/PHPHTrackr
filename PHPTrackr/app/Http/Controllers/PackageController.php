@@ -41,7 +41,7 @@ class PackageController extends Controller
     public function create(){
         return view('packages.create');
     }
-    public function store(Request $request)
+    public function store(Request $request) // OUTDATED
     {
         $webshop = $request->input('webshopName');
         if ($webshop == null){
