@@ -9,8 +9,7 @@ use App\Http\Controllers\Auth\ConfirmablePasswordController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\RegisteredAdminController;
 use App\Http\Controllers\Auth\LoginUserController;
-
-
+use App\Http\Controllers\CustomerViewController;
 
 // guest pages
 Route::middleware('guest')->group(function () {
@@ -25,13 +24,13 @@ Route::middleware('guest')->group(function () {
         ->name('register');
 
     Route::post('admin/register', [RegisteredAdminController::class, 'store']);
-    /*
+    
     // normal register
     Route::get('register', [RegisteredUserController::class, 'create'])
         ->name('register');
 
     Route::post('register', [RegisteredUserController::class, 'store']);
-    */
+    
 });
 
 // logged in users
@@ -85,7 +84,7 @@ Route::middleware(['employeeRead'])->group(function () {
 
 // all pages for recievers
 Route::middleware(['receiver'])->group(function () {
-
+    Route::get('customerview', [CustomerViewController::class, 'show'])->name('customerview');
 });
 Route::get('/dashboard', function () {
     return view('dashboard');
