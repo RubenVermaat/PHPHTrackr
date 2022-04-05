@@ -179,6 +179,7 @@ return [
         Barryvdh\DomPDF\ServiceProvider::class,
         Kyslik\ColumnSortable\ColumnSortableServiceProvider::class,
         Milon\Barcode\BarcodeServiceProvider::class,
+        Laravel\Passport\PassportServiceProvider::class,
 
     ],
 
