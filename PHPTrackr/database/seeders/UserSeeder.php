@@ -22,7 +22,8 @@ class UserSeeder extends Seeder
             'email' => 'ruben.vanderhout@gmail.com',
             'password' => Hash::make('RubenTestPassword'), // password
             'remember_token' => Str::random(10),
-            'role' => "Admin"
+            'role' => "Admin",
+            'api_token' => Str::random(60)
         ]);
         \App\Models\User::factory(10)->create();
         User::create([
