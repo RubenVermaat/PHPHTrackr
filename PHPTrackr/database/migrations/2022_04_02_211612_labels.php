@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('labels', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('packageId');
-            $table->string('status');
+            $table->string('status')->default('Aangemeld');
             $table->date('deliveryDate')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamps();
         });

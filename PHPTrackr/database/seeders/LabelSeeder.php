@@ -27,20 +27,16 @@ class LabelSeeder extends Seeder
             'status' => 'Aangemeld'
         ]);
         Label::create([
-            'packageId' => '2',
-            'shop' => 'Dierenwinkel'
+            'packageId' => '2'
         ]);
         Label::create([
-            'packageId' => '2',
-            'shop' => 'Dierenwinkel'
+            'packageId' => '2'
         ]);
         Label::create([
-            'packageId' => '3',
-            'shop' => 'Dierenwinkel'
+            'packageId' => '3'
         ]);
         Label::create([
             'packageId' => '4',
-            'shop' => 'Dierenwinkel',
             'status' => 'Afgeleverd'
         ]);
     }
