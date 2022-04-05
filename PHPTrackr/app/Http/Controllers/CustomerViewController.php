@@ -12,28 +12,30 @@ class CustomerViewController extends Controller
     {
         $data = 0;
     
-        if(request('name')){
+        if(request('button')){
             $data = DB::table('labels')->join('packages', 'labels.packageId', '=', 'packages.id')
-            ->orderBy(request('name'))
+            ->orderBy(request('button'))
             ->select(['labels.id','packages.firstname', 'packages.email','labels.shop', 'labels.status'])
             ->paginate(5);
         } else if(request('search')){
-           
-            $data = DB::table('labels')->join('packages', 'labels.packageId', '=', 'packages.id')
-            ->where('packages.firstname', 'like', '%' . request('search') . '%')
-            ->orWhere('packages.email', 'like', '%' . request('search') . '%')
-            ->orWhere('labels.shop', 'like', '%' . request('search') . '%')
-            ->orWhere('labels.status', 'like', '%' . request('search') . '%')
-            ->select(['labels.id','packages.firstname', 'packages.email','labels.shop', 'labels.status'])
-            ->paginate(5);
+           $data = $this->getSearchResult();
         } else{
             $data = DB::table('labels')->join('packages', 'labels.packageId', '=', 'packages.id')
             ->select(['labels.id','packages.firstname', 'packages.email','labels.shop', 'labels.status'])
             ->paginate(5);
         }
         
-        return view('customers.index',  ['data' => $data]);
+        return view('customers.index', ['data' => $data]);
     }
 
-    
+    public function getSearchResult(){
+        $result = DB::table('labels')->join('packages', 'labels.packageId', '=', 'packages.id')
+        ->where('packages.firstname', 'like', '%' . request('search') . '%')
+        ->orWhere('packages.email', 'like', '%' . request('search') . '%')
+        ->orWhere('labels.shop', 'like', '%' . request('search') . '%')
+        ->orWhere('labels.status', 'like', '%' . request('search') . '%')
+        ->select(['labels.id','packages.firstname', 'packages.email','labels.shop', 'labels.status'])
+        ->paginate(5);
+        return $result;
+    }
 }
