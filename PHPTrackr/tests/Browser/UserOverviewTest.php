@@ -30,8 +30,6 @@ class UserOverviewTest extends DuskTestCase
             $browser->visit('/customerview')
                 ->type('search', '1');
             $browser->driver->getKeyboard()->sendKeys(WebDriverKeys::ENTER);
-            // this somehow doesnt work?!?
-            //->keys('search', [WebDriverKeys::ENTER]);
             $browser->assertSee('No products to display.');
         });
     }
@@ -43,8 +41,6 @@ class UserOverviewTest extends DuskTestCase
             $browser->visit('/customerview')
                 ->type('search', 'J');
             $browser->driver->getKeyboard()->sendKeys(WebDriverKeys::ENTER);
-            // this somehow doesnt work?!?
-            //->keys('search', [WebDriverKeys::ENTER]);
             $browser->assertSee('James')->assertDontSee('Pieter');
         });
     }

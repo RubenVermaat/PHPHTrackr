@@ -26,7 +26,7 @@
                 <select dusk="role" name="role" class="block mt-1 w-full" required>
                     <option selected disabled>Select a Role</option>
                     @foreach($data as $role)
-                        <option value="{{ $role }}">{{ $role->name }}</option>
+                        <option value="{{ $role }}">{{ $role}}</option>
                     @endforeach
                 </select>
 
