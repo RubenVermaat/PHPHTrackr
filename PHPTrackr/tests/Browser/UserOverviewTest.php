@@ -17,7 +17,7 @@ class UserOverviewTest extends DuskTestCase
         parent::setUp();
 
         if (!static::$migrationRun) {
-            $this->artisan('migrate:refresh');
+            $this->artisan('migrate:fresh');
             $this->artisan('db:seed');
             static::$migrationRun = true;
         }
