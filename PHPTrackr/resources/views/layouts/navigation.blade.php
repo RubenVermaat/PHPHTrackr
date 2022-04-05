@@ -22,6 +22,9 @@
                         <x-nav-link :href="route('customerview')" :active="request()->routeIs('customerview')">
                         {{ __('CustomerView') }}
                         </x-nav-link>
+                        <x-nav-link :href="route('customerreview')" :active="request()->routeIs('customerreview')">
+                        {{ __('Customerreview') }}
+                        </x-nav-link>
                         @endif
                     @endif
                     
@@ -41,6 +44,9 @@
                     @guest
                     <x-nav-link :href="route('customerview')" :active="request()->routeIs('customerview')">
                         {{ __('CustomerView') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('customerreview')" :active="request()->routeIs('customerreview')">
+                        {{ __('Customerreview') }}
                     </x-nav-link>
                     @endguest
                 </div>

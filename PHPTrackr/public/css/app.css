@@ -680,9 +680,6 @@ select {
 .mt-5 {
   margin-top: 1.25rem;
 }
-.ml-auto {
-  margin-left: auto;
-}
 .mt-6 {
   margin-top: 1.5rem;
 }
@@ -1270,10 +1267,6 @@ select {
   --tw-bg-opacity: 1;
   background-color: rgb(249 250 251 / var(--tw-bg-opacity));
 }
-.hover\:bg-red-700:hover {
-  --tw-bg-opacity: 1;
-  background-color: rgb(185 28 28 / var(--tw-bg-opacity));
-}
 .hover\:text-gray-500:hover {
   --tw-text-opacity: 1;
   color: rgb(107 114 128 / var(--tw-text-opacity));
@@ -1515,4 +1508,5 @@ select {
     background-color: rgb(243 244 246 / var(--tw-bg-opacity));
   }
 }
+
 
