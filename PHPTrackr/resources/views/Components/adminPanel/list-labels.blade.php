@@ -38,7 +38,7 @@
                                     <option value="{{ $status }}">{{ $status }}</option>
                                 @endforeach
                         </select>
-                        <button type="submit" name="submit">update</button>
+                        <button class="bg-blue-600 text-white text-sm px-4 py-2 border rounded-full" type="submit" name="submit">Update</button>
                     </form>
                 </td>
                 <td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b text-center block lg:table-cell relative lg:static">
