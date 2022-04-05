@@ -17,7 +17,7 @@ return new class extends Migration
         Schema::create('labels', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('packageId');
-            $table->string('status')->default('Aangemeld');
+            $table->string('status')->default('Uitgeprint');
             $table->date('deliveryDate')->default(Carbon::now()->toDateTimeString());
             $table->timestamps();
         });

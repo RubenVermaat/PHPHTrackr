@@ -29,7 +29,7 @@
                 </td>
                 <td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b text-center block lg:table-cell relative lg:static" style="display: flex; justify-content: space-around; align-items: center;">
                     <span class="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">Status</span>
-                    <span class="rounded @if($label->status == "Aangemeld")bg-red-400 @elseif($label->status == "Afgeleverd")bg-green-400 @else bg-blue-400 @endif  py-1 px-3 text-xs font-bold">{{ $label->status }}</span>
+                    <span class="rounded @if($label->status == "Uitgeprint")bg-red-400 @elseif($label->status == "Afgeleverd")bg-green-400 @else bg-blue-400 @endif  py-1 px-3 text-xs font-bold">{{ $label->status }}</span>
                     <form id="statusForm" method="POST" action="/labels/update">
                         @csrf
                         <input name="id" value="{{ $label->id }}" type="hidden">
