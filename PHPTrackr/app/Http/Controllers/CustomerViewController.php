@@ -38,4 +38,11 @@ class CustomerViewController extends Controller
         ->paginate(5);
         return $result;
     }
+    public function show(){
+
+    }
+
+    public function store(){
+        
+    }
 }
