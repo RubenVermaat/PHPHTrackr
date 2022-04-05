@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+        <h2 class="text-xl text-gray-800 leading-tight">
             {{ __('Review') }}
         </h2>
     </x-slot>
@@ -43,7 +43,7 @@
 
                 <div style="width: 40%;" class="h-full bg-white mr-4 ml-4 mt-4 mb-4 border-gray-200 border p-6 sm:rounded-lg">
                     <header>
-                        <h3 class="font-bold">{{ $reviews->name }} - {{ $reviews->rating }} stars</h3>
+                        <h3>{{ $reviews->name }} - {{ $reviews->rating }} stars</h3>
                     </header>
                     <p>{{ $reviews->comment }}</p>
                 </div>
