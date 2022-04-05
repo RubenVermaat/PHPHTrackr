@@ -19,9 +19,12 @@
 
                     @if(auth()->user() != null)
                         @if(auth()->user()->isAdmin(auth()->user()->getId()))
-                            <x-nav-link :href="route('adminPanel')" :active="request()->routeIs('adminPanel')">
-                                {{ __('Admin panel') }}
-                            </x-nav-link>
+                        <x-nav-link :href="route('customerview')" :active="request()->routeIs('customerview')">
+                        {{ __('Overzicht') }}
+                        </x-nav-link>
+                        <x-nav-link :href="route('customerreview')" :active="request()->routeIs('customerreview')">
+                        {{ __('Review') }}
+                        </x-nav-link>
                         @endif
                     @endif
                     
@@ -38,17 +41,12 @@
                         </x-nav-link>
                         @endif
                     @endif  
-                    @if(auth()->user() != null)
-                        @if(auth()->user()->isReceiver(auth()->user()->getId()))
-                        <x-nav-link :href="route('customerview')" :active="request()->routeIs('customerview')">
-                            {{ __('CustomerView') }}
-                        </x-nav-link>
-
-                        @endif
-                    @endif
                     @guest
                     <x-nav-link :href="route('customerview')" :active="request()->routeIs('customerview')">
-                        {{ __('CustomerView') }}
+                        {{ __('Overzicht') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('customerreview')" :active="request()->routeIs('customerreview')">
+                        {{ __('Review') }}
                     </x-nav-link>
                     @endguest
                 </div>

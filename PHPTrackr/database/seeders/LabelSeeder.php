@@ -20,20 +20,23 @@ class LabelSeeder extends Seeder
         
         Label::create([
             'packageId' => '1',
+            'shop' => 'Koffieshop',
+            'status' => 'Onderweg'
+        ]);
+        Label::create([
+            'packageId' => '2',
+            'shop' => 'Dierenwinkel',
             'status' => 'Aangemeld'
         ]);
         Label::create([
             'packageId' => '2',
+            'shop' => 'Dierenwinkel',
             'status' => 'Aangemeld'
         ]);
         Label::create([
-            'packageId' => '2'
-        ]);
-        Label::create([
-            'packageId' => '2'
-        ]);
-        Label::create([
-            'packageId' => '3'
+            'packageId' => '3',
+            'shop' => 'Dierenwinkel',
+            'status' => 'Aangemeld'
         ]);
         Label::create([
             'packageId' => '4',

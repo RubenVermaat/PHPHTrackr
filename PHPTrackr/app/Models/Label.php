@@ -23,4 +23,9 @@ class Label extends Model
         'shop',
         'status'
     ];
+
+    public function status()
+    {
+        return $this->belongsTo(Status::class);
+    }
 }
