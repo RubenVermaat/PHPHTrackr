@@ -20,7 +20,10 @@
                     @if(auth()->user() != null)
                         @if(auth()->user()->isAdmin(auth()->user()->getId()))
                         <x-nav-link :href="route('customerview')" :active="request()->routeIs('customerview')">
-                        {{ __('CustomerView') }}
+                        {{ __('Overzicht') }}
+                        </x-nav-link>
+                        <x-nav-link :href="route('customerreview')" :active="request()->routeIs('customerreview')">
+                        {{ __('Review') }}
                         </x-nav-link>
                         @endif
                     @endif
@@ -40,7 +43,10 @@
                     @endif  
                     @guest
                     <x-nav-link :href="route('customerview')" :active="request()->routeIs('customerview')">
-                        {{ __('CustomerView') }}
+                        {{ __('Overzicht') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('customerreview')" :active="request()->routeIs('customerreview')">
+                        {{ __('Review') }}
                     </x-nav-link>
                     @endguest
                 </div>
