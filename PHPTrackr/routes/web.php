@@ -21,16 +21,18 @@ Route::middleware('guest')->group(function () {
 
     // admin register
     Route::get('admin/register', [RegisteredAdminController::class, 'create'])
-        ->name('register');
+    ->name('admin/register');
 
-    Route::post('admin/register', [RegisteredAdminController::class, 'store']);
+    Route::post('admin/register', [RegisteredAdminController::class, 'store'])
+    ->name('admin/register-post');
+
     
     // normal register
     Route::get('register', [RegisteredUserController::class, 'create'])
         ->name('register');
 
-    Route::post('register', [RegisteredUserController::class, 'store']);
-    
+    Route::post('register', [RegisteredUserController::class, 'store'])
+    ->name('register-post');
 });
 
 // logged in users

@@ -8,32 +8,53 @@ use Tests\DuskTestCase;
 
 class RegisterTest extends DuskTestCase
 {
-    /**
-     * A Dusk test example.
-     *
-     * @return void
-     */
-    public function testRegister()
+
+    protected static $migrationRun = false;
+
+    public function setUp(): void
+    {
+        parent::setUp();
+
+        if (!static::$migrationRun) {
+            $this->artisan('migrate:refresh');
+            $this->artisan('db:seed');
+            static::$migrationRun = true;
+        }
+    }
+
+    /** @test */
+    public function selectNoRoleTest()
     {
         $this->browse(function (Browser $browser) {
-            // select nothing
-            $browser->visit('/register')
+            $browser->visit('/admin/register')
                 ->type('@name', 'David')
                 ->type('@email', 'David.vanderhout@gmail.com')
                 ->type('@password', 'DavidTestPassword')
                 ->type('@password_confirmation', 'DavidTestPassword')
                 ->press('@register')
                 ->assertSee('Whoops! Something went wrong.');
-            // wrong second password
+        });
+    }
+
+    /** @test */
+    public function wrongSecondPassword()
+    {
+        $this->browse(function (Browser $browser) {
             $browser->visit('/register')
                 ->type('@name', 'David')
                 ->type('@email', 'David.vanderhout@gmail.com')
-                ->select('role')
                 ->type('@password', 'DavidTestPassword')
                 ->type('@password_confirmation', 'RubenTestPassword')
                 ->press('@register')
                 ->assertSee('Whoops! Something went wrong.');
-            // already exists
+        });
+    }
+
+    
+    /** @test */
+    public function alreadyExcists()
+    {
+        $this->browse(function (Browser $browser) {
             $browser->visit('/register')
                 ->type('@name', 'Ruben')
                 ->type('@email', 'Ruben.vanderhout@gmail.com')
@@ -41,12 +62,16 @@ class RegisterTest extends DuskTestCase
                 ->type('@password_confirmation', 'RubenTestPassword')
                 ->press('@register')
                 ->assertSee('Whoops! Something went wrong.');
-
-            //good login
+        });
+    }
+    
+    /** @test */
+    public function goodLoginTest()
+    {
+        $this->browse(function (Browser $browser) {
             $browser->visit('/register')
                 ->type('@name', 'David')
                 ->type('@email', 'David.vanderhout@gmail.com')
-                ->select('role')
                 ->type('@password', 'DavidTestPassword')
                 ->type('@password_confirmation', 'DavidTestPassword')
                 ->press('@register')
