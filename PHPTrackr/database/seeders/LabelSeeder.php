@@ -25,5 +25,22 @@ class LabelSeeder extends Seeder
             'shop' => 'Fietsenwinkel',
             'status' => 'Aangemeld'
         ]);
+        Label::create([
+            'packageId' => '2',
+            'shop' => 'Dierenwinkel'
+        ]);
+        Label::create([
+            'packageId' => '2',
+            'shop' => 'Dierenwinkel'
+        ]);
+        Label::create([
+            'packageId' => '3',
+            'shop' => 'Dierenwinkel'
+        ]);
+        Label::create([
+            'packageId' => '4',
+            'shop' => 'Dierenwinkel',
+            'status' => 'Afgeleverd'
+        ]);
     }
 }

@@ -9,8 +9,7 @@ use App\Http\Controllers\Auth\ConfirmablePasswordController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\RegisteredAdminController;
 use App\Http\Controllers\Auth\LoginUserController;
-
-
+use App\Http\Controllers\CustomerViewController;
 
 // guest pages
 Route::middleware('guest')->group(function () {
@@ -22,16 +21,18 @@ Route::middleware('guest')->group(function () {
 
     // admin register
     Route::get('admin/register', [RegisteredAdminController::class, 'create'])
-        ->name('register');
+    ->name('admin/register');
 
-    Route::post('admin/register', [RegisteredAdminController::class, 'store']);
-    /*
+    Route::post('admin/register', [RegisteredAdminController::class, 'store'])
+    ->name('admin/register-post');
+
+    
     // normal register
     Route::get('register', [RegisteredUserController::class, 'create'])
         ->name('register');
 
-    Route::post('register', [RegisteredUserController::class, 'store']);
-    */
+    Route::post('register', [RegisteredUserController::class, 'store'])
+    ->name('register-post');
 });
 
 // logged in users
@@ -64,9 +65,6 @@ Route::middleware(['employeeWrite'])->group(function () {
         Route::post('packages/store', 'store')->name('packageStore');
     });
 
-    Route::get('/', function () {
-        return view('welcome');
-    });
 });
 // all pages employee read access
 Route::middleware(['employeeRead'])->group(function () {
@@ -81,15 +79,17 @@ Route::middleware(['employeeRead'])->group(function () {
     });
 });
 
-
+Route::get('/', function () {
+    return view('welcome');
+});
 
 // all pages for recievers
 Route::middleware(['receiver'])->group(function () {
-
+    Route::get('customerview', [CustomerViewController::class, 'index'])->name('customerview');
 });
 Route::get('/dashboard', function () {
     return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+})->name('dashboard');
 
 
 require __DIR__ . '/channels.php';

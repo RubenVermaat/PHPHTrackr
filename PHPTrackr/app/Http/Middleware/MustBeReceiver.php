@@ -18,9 +18,8 @@ class MustBeReceiver
     public function handle(Request $request, Closure $next)
     {
         if(auth()->guest()){
-            abort(Response::HTTP_FORBIDDEN);
+            return $next($request);
         }
-     
         if($request->user() != null){
             if($request->user()->isReceiver()){
                 return $next($request);

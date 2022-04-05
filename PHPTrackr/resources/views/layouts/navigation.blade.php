@@ -24,12 +24,33 @@
                             </x-nav-link>
                         @endif
                     @endif
+                    
+                    @if(auth()->user() != null)
+                        @if(auth()->user()->canWrite(auth()->user()->getId()))
                     <x-nav-link :href="route('packageIndex')" :active="request()->routeIs('packageIndex')">
                         {{ __('Packages') }}
                     </x-nav-link>
                     <x-nav-link :href="route('labelIndex')" :active="request()->routeIs('labelIndex')">
                         {{ __('Labels') }}
                     </x-nav-link>
+                        <x-nav-link :href="route('adminPanel')" :active="request()->routeIs('adminPanel')">
+                            {{ __('Admin panel') }}
+                        </x-nav-link>
+                        @endif
+                    @endif  
+                    @if(auth()->user() != null)
+                        @if(auth()->user()->isReceiver(auth()->user()->getId()))
+                        <x-nav-link :href="route('customerview')" :active="request()->routeIs('customerview')">
+                            {{ __('CustomerView') }}
+                        </x-nav-link>
+
+                        @endif
+                    @endif
+                    @guest
+                    <x-nav-link :href="route('customerview')" :active="request()->routeIs('customerview')">
+                        {{ __('CustomerView') }}
+                    </x-nav-link>
+                    @endguest
                 </div>
             </div>
 
