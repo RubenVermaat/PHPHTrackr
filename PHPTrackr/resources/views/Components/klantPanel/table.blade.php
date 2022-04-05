@@ -14,9 +14,7 @@
                 <th class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">
                     <button dusk="status" type="submit" value="status" name="button">Status</button>
                 </th>
-                <th class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">
-                    <a>Actions</a>
-                </th>
+                
             </form>
         </tr>
     </thead>
@@ -39,9 +37,6 @@
             </td>
             <td name="status" dusk="status" class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">
                 {{ $label->status}}
-            </td>
-            <td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">
-                <a href="{{ url('customerview/review') }}" class="text-blue-400 hover:text-blue-600 underline">Review</a>
             </td>
         </tr>
         @endforeach
