@@ -21,7 +21,7 @@ class MustBeReceiver
             return $next($request);
         }
         if($request->user() != null){
-            if($request->user()->isReceiver()){
+            if($request->user()->isReceiver($request->user()->getId())){
                 return $next($request);
             } else{
                 abort(Response::HTTP_FORBIDDEN);

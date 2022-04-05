@@ -41,7 +41,7 @@
                 {{ $label->status}}
             </td>
             <td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">
-                <a class="text-blue-400 hover:text-blue-600 underline">Review</a>
+                <a href="{{ url('customerview/review') }}" class="text-blue-400 hover:text-blue-600 underline">Review</a>
             </td>
         </tr>
         @endforeach

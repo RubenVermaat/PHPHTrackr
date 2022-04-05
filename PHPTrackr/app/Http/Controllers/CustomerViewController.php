@@ -39,7 +39,8 @@ class CustomerViewController extends Controller
         return $result;
     }
     public function show(){
-
+        
+        return view('customers.review');
     }
 
     public function store(){
