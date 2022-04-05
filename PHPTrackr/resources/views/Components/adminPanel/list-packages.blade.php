@@ -24,7 +24,7 @@
         @foreach ($data as $package)
             <tr class="bg-white lg:hover:bg-gray-100 flex lg:table-row flex-row lg:flex-row flex-wrap lg:flex-no-wrap mb-10 lg:mb-0">
                 <td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">
-                    @if ($package->labelGenerated == false) <input type="checkbox" name="packages[]" value="{{ $package->id}}"> @endif
+                    @if ($sortable) @if ($package->labelGenerated == false) <input type="checkbox" name="packages[]" value="{{ $package->id}}"> @endif @endif
                     <span class="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">Company name</span>
                     {{ $package->id }}
                 </td>

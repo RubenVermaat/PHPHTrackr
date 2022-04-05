@@ -14,9 +14,9 @@ class LabelController extends Controller
 {
     public function index()
     {
-        $webshops = Status::pluck('name');
+        $statuses = Status::pluck('name');
         $labels = Label::sortable()->paginate(10);
-        return view('/labels.index', ['labels' => $labels, 'statuses' => $webshops]);
+        return view('/labels.index', ['labels' => $labels, 'statuses' => $statuses]);
     }
     
     public function search(Request $request)
@@ -68,7 +68,7 @@ class LabelController extends Controller
             $deliveryInfo['city'] = $shop->first()->city;
             $deliveryInfo['street'] = $shop->first()->street;
             $deliveryInfo['housenumber'] = $shop->first()->housenumber;
-            $deliveryInfo['statement'] = "Will be delivert at the shop";
+            $deliveryInfo['statement'] = "Will be delivert at the shop for 15.00";
         }else{
             $deliveryInfo['where'] = $package->first()->firstname. " " .$package->first()->surname;
             $deliveryInfo['city'] = $package->first()->city;
