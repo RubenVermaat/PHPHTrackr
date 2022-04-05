@@ -88,7 +88,11 @@ Route::get('/', function () {
 Route::middleware(['receiver'])->group(function () {
     Route::get('customerview', [CustomerViewController::class, 'index'])->name('customerview');
     Route::get('customerview/review', [CustomerViewController::class, 'show'])->name('customerreview');
+<<<<<<< HEAD
     Route::post('customerview/review/store', [CustomerViewController::class, 'store'])->name('customerreview-post');
+=======
+    Route::post('customerview/review', [CustomerViewController::class, 'store'])->name('customerreview-post');
+>>>>>>> 9be518526b8e9792c90eecb3bc47c249839a1e56
 });
 Route::get('/dashboard', function () {
     return view('dashboard');

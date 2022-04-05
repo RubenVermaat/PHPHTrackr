@@ -50,14 +50,14 @@ class CustomerViewController extends Controller
         $request->validate([
             'name' => ['string', 'max:255'],
             'comment' => ['string', 'max:800'],
-            //'rating' => ['integer','min:1','max:5'],
+            'rating' => ['integer','min:1','max:5'],
         ]);
         
         Review::create([
             'name' => $request->name,
             'comment' => $request->body,    
-            'rating' => 4,   
+            'rating' => $request->stars,   
         ]);
-        
+        return redirect('customerview/review');
     }
 }

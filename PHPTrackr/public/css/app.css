@@ -966,6 +966,10 @@ select {
   --tw-bg-opacity: 1;
   background-color: rgb(37 99 235 / var(--tw-bg-opacity));
 }
+.bg-blue-600 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(37 99 235 / var(--tw-bg-opacity));
+}
 .fill-current {
   fill: currentColor;
 }
@@ -1131,12 +1135,15 @@ select {
   color: rgb(153 246 228 / var(--tw-text-opacity));
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
 .text-gray-600 {
   --tw-text-opacity: 1;
   color: rgb(75 85 99 / var(--tw-text-opacity));
 }
 .text-indigo-700 {
 =======
+=======
+>>>>>>> 9be518526b8e9792c90eecb3bc47c249839a1e56
 .text-red-600 {
 >>>>>>> routes
   --tw-text-opacity: 1;
@@ -1169,6 +1176,10 @@ select {
 <<<<<<< HEAD
 .text-red-600 {
 =======
+.text-blue-400 {
+  --tw-text-opacity: 1;
+  color: rgb(96 165 250 / var(--tw-text-opacity));
+}
 .text-blue-400 {
   --tw-text-opacity: 1;
   color: rgb(96 165 250 / var(--tw-text-opacity));
@@ -1297,6 +1308,7 @@ select {
   color: rgb(156 163 175 / var(--tw-text-opacity));
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
 .hover\:text-white:hover {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
@@ -1308,9 +1320,15 @@ select {
   --tw-text-opacity: 1;
   color: rgb(31 41 55 / var(--tw-text-opacity));
 }
+=======
+>>>>>>> 9be518526b8e9792c90eecb3bc47c249839a1e56
 .hover\:text-gray-900:hover {
   --tw-text-opacity: 1;
   color: rgb(17 24 39 / var(--tw-text-opacity));
+}
+.hover\:text-blue-600:hover {
+  --tw-text-opacity: 1;
+  color: rgb(37 99 235 / var(--tw-text-opacity));
 }
 .hover\:text-blue-600:hover {
   --tw-text-opacity: 1;
@@ -1537,4 +1555,5 @@ select {
     background-color: rgb(243 244 246 / var(--tw-bg-opacity));
   }
 }
+
 
