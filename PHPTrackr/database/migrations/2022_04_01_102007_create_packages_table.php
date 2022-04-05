@@ -18,9 +18,19 @@ return new class extends Migration
             $table->string('email');
             $table->string('firstname');
             $table->string('surname');
+            $table->string('city')->nullable();
+            $table->string('street')->nullable();
+            $table->string('housenumber')->nullable();
+            $table->string('shop')->default("Dierenwinkel");
+            $table->boolean('homeDelivery')->default(false);
             $table->boolean('labelGenerated')->default(false);
             $table->timestamps();
         });
+
+        Schema::table('packages', function (Blueprint $table) {
+            $table->foreign('shop')->references('name')->on('webshops');
+        });
+        
     }
 
     /**
