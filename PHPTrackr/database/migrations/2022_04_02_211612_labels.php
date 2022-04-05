@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Carbon\Carbon;
 
 return new class extends Migration
 {
@@ -17,7 +18,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('packageId');
             $table->string('status')->default('Aangemeld');
-            $table->date('deliveryDate')->default(DB::raw('CURRENT_TIMESTAMP'));
+            $table->date('deliveryDate')->default(Carbon::now()->toDateTimeString());
             $table->timestamps();
         });
         Schema::table('labels', function (Blueprint $table) {
