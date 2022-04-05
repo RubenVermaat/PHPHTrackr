@@ -29,7 +29,8 @@ class LabelSeeder extends Seeder
         ]);
         Label::create([
             'packageId' => '4',
-            'shop' => 'Dierenwinkel'
+            'shop' => 'Dierenwinkel',
+            'status' => 'Afgeleverd'
         ]);
     }
 }
