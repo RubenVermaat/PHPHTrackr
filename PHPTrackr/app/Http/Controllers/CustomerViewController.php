@@ -48,8 +48,8 @@ class CustomerViewController extends Controller
     public function store(Request $request){
        
         $request->validate([
-            'name' => ['required', 'string', 'max:255'],
-            'comment' => ['required', 'string', 'max:800'],
+            'name' => ['string', 'max:255'],
+            'comment' => ['string', 'max:800'],
             //'rating' => ['integer','min:1','max:5'],
         ]);
         

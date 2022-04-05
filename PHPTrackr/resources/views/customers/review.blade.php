@@ -18,11 +18,11 @@
                         </header>
 
                         <div class="mt-4">
-                            <input name="name" placeholder="Naam" type="text" class="border-gray-200 border h-10 px-5 pr-10 rounded-full text-sm focus:outline-none">
+                            <input name="name" placeholder="Naam" type="text" class="border-gray-200 border h-10 px-5 pr-10 rounded-full text-sm focus:outline-none" required>
                         </div>
 
                         <div class="mt-4">
-                            <textarea style="resize:none" name="body" class="w-full sm:rounded-lg border-gray-200" cols="30" rows="10" placeholder="Write a comment"></textarea>
+                            <textarea style="resize:none" name="body" class="w-full sm:rounded-lg border-gray-200" cols="30" rows="10" placeholder="Write a comment" required></textarea>
                         </div>
 
                         <div class="mt-4 flex justify-end"> 
