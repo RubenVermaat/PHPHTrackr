@@ -54,9 +54,7 @@ Route::middleware(['adminRole'])->group(function () {
 
 // all pages employee write access
 Route::middleware(['employeeWrite'])->group(function () {
-    Route::get('/', function () {
-        return view('welcome');
-    });
+  
 });
 // all pages employee read access
 Route::middleware(['employeeRead'])->group(function () {
@@ -64,7 +62,9 @@ Route::middleware(['employeeRead'])->group(function () {
     
 });
 
-
+Route::get('/', function () {
+    return view('welcome');
+});
 
 // all pages for recievers
 Route::middleware(['receiver'])->group(function () {
@@ -72,7 +72,7 @@ Route::middleware(['receiver'])->group(function () {
 });
 Route::get('/dashboard', function () {
     return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+})->name('dashboard');
 
 Route::controller(PackageController::class)->group(function () {
     Route::get('adminviews/adminPanel', 'panelIndex')->name('adminPanel');
