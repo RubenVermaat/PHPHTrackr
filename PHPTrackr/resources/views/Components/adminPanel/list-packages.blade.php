@@ -24,6 +24,7 @@
         @foreach ($data as $package)
             <tr class="bg-white lg:hover:bg-gray-100 flex lg:table-row flex-row lg:flex-row flex-wrap lg:flex-no-wrap mb-10 lg:mb-0">
                 <td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">
+                    @if ($sortable) @if ($package->labelGenerated == false) <input type="checkbox" name="packages[]" value="{{ $package->id}}"> @endif @endif
                     <span class="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">Company name</span>
                     {{ $package->id }}
                 </td>
@@ -46,15 +47,16 @@
                 <td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b text-center block lg:table-cell relative lg:static">
                     <span class="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">Actions</span>
                     @if ($package->labelGenerated == false)
-                        <a href="/labels/create/{{ $package->id }}" class="text-blue-400 hover:text-blue-600 underline">Generate label</a>
+                        <a href="/labels/store/{{ $package->id }}" class="bg-blue-600 text-white text-sm px-4 py-2 border rounded-full">Generate label</a>
                     @endif
                 </td>
             </tr>
         @endforeach
     </tbody>
-</table>
+</table> 
 
 @if ($sortable)
+    <button class="mt-3 bg-blue-600 text-white text-sm px-4 py-2 border rounded-full">Generate labels</button>
     {{ $data->links() }}
 
     <p>

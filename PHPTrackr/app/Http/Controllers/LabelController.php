@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Label;
 use App\Models\Package;
+use App\Models\Status;
 use App\Models\Webshop;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -13,9 +14,9 @@ class LabelController extends Controller
 {
     public function index()
     {
-        $webshops = DB::table('statuses')->pluck('name');
+        $statuses = Status::pluck('name');
         $labels = Label::sortable()->paginate(10);
-        return view('/labels.index', ['labels' => $labels, 'statuses' => $webshops]);
+        return view('/labels.index', ['labels' => $labels, 'statuses' => $statuses]);
     }
     
     public function search(Request $request)
@@ -41,8 +42,20 @@ class LabelController extends Controller
         $package = Package::Find($id);
         $package->labelGenerated = true;
         $package->save();
-        Label::create(['packageId' => $package->id, 'shop' => 'Dierenwinkel']);
-        return redirect()->route('adminPanel');
+        Label::create(['packageId' => $package->id]);
+        return redirect()->route('labelIndex');
+    }
+
+    public function storeBulk(Request $request)
+    {
+        $packages = $request->input('packages');
+        foreach ($packages as $packageId){
+            $package = Package::Find($packageId);
+            $package->labelGenerated = true;
+            $package->save();
+            Label::create(['packageId' => $packageId]);
+        }
+        return redirect()->route('labelIndex');
     }
 
     public function exportPDF($id)
@@ -55,7 +68,7 @@ class LabelController extends Controller
             $deliveryInfo['city'] = $shop->first()->city;
             $deliveryInfo['street'] = $shop->first()->street;
             $deliveryInfo['housenumber'] = $shop->first()->housenumber;
-            $deliveryInfo['statement'] = "Will be delivert at the shop";
+            $deliveryInfo['statement'] = "Will be delivert at the shop for 15.00";
         }else{
             $deliveryInfo['where'] = $package->first()->firstname. " " .$package->first()->surname;
             $deliveryInfo['city'] = $package->first()->city;
@@ -69,5 +82,16 @@ class LabelController extends Controller
 
         return $pdf_doc->download('pdf.pdf');
         //return view('labels.pdf', ['label' => $label, 'package' => $package, 'deliveryInfo' => $deliveryInfo]);// converting to page for editing ease
-    }  
+    }
+
+    public function updateStatus(Request $request)
+    {
+        $label = Label::find($request->input('id'));
+        $label->status = $request->input('status');
+        $label->save();
+        
+        $statuses = Status::pluck('name');
+        $labels = Label::sortable()->paginate(10);
+        return view('/labels.index', ['labels' => $labels, 'statuses' => $statuses]);
+    }
 }

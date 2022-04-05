@@ -25,6 +25,7 @@ class PackageSeeder extends Seeder
             'email' => 'Pieter@gmail.com',
             'firstname' => 'Pieter',
             'surname' => 'van Dijk',
+            'labelGenerated' => true,
             'city' => 'Gouda',
             'street' => 'Blaak',
             'housenumber' => '24',
@@ -33,12 +34,14 @@ class PackageSeeder extends Seeder
         Package::create([
             'email' => 'Ruben@gmail.com',
             'firstname' => 'Ruben',
-            'surname' => 'Berg'
+            'surname' => 'Berg',
+            'labelGenerated' => true
         ]);
         Package::create([
             'email' => 'Natalja@gmail.com',
             'firstname' => 'Natalja',
-            'surname' => 'Pieterson'
+            'surname' => 'Pieterson',
+            'labelGenerated' => true
         ]);
         Package::create([
             'email' => 'Lucas@gmail.com',

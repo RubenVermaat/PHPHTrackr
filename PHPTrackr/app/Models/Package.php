@@ -15,7 +15,11 @@ class Package extends Model
         'webshopName',
         'email',
         'firstname',
-        'surname'
+        'surname',
+        'homeDelivery',
+        'city',
+        'street',
+        'housenumber'
     ];
     public $sortable = [
         'id',

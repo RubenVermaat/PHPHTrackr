@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Imports\packageImport;
 use App\Models\Label;
 use App\Models\Package;
+use App\Imports\UsersImport;
+use App\Models\Webshop;
+use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Http\Request;
 
 class PackageController extends Controller
@@ -39,15 +43,35 @@ class PackageController extends Controller
         return view('labels.create', $package);
     }
     public function create(){
-        return view('packages.create');
+        $webshops = Webshop::pluck('name');
+        return view('packages.create', ['webshops' => $webshops]);
     }
     public function store(Request $request) // OUTDATED
     {
+        $housedelivery = true;
         $webshop = $request->input('webshopName');
         if ($webshop == null){
             $webshop = "Dierenwinkel";
         }
-        Package::create(['firstname' => $request->input('firstname'), 'surname' => $request->input('surname'),'email' => $request->input('email'), 'shop' => $webshop]);
+        if (empty($request->input('city')) || empty($request->input('street')) || empty($request->input('housenumber'))) 
+         $housedelivery = false;
+        Package::create([
+            'firstname' => $request->input('firstname'), 
+            'surname' => $request->input('surname'),
+            'email' => $request->input('email'), 
+            'city' => $request->input('city'),
+            'street' => $request->input('street'),
+            'housenumber' => $request->input('housenumber'),
+            'homeDelivery' => $housedelivery,
+            'shop' => $webshop
+        ]);
         return redirect()->route('adminPanel');
+    }
+
+    public function import()
+    {
+        Excel::import(new packageImport, request()->file('file'));
+
+        return back();
     }
 }

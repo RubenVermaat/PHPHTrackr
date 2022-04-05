@@ -17,26 +17,16 @@ class LabelSeeder extends Seeder
      */
     public function run()
     {
-        
         Label::create([
             'packageId' => '1',
-            'shop' => 'Koffieshop',
-            'status' => 'Onderweg'
-        ]);
-        Label::create([
-            'packageId' => '2',
-            'shop' => 'Dierenwinkel',
             'status' => 'Aangemeld'
         ]);
         Label::create([
             'packageId' => '2',
-            'shop' => 'Dierenwinkel',
             'status' => 'Aangemeld'
         ]);
         Label::create([
-            'packageId' => '3',
-            'shop' => 'Dierenwinkel',
-            'status' => 'Aangemeld'
+            'packageId' => '3'
         ]);
         Label::create([
             'packageId' => '4',

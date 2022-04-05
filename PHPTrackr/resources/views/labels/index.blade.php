@@ -18,11 +18,11 @@
                                         <option value="{{ $status }}">{{ $status }}</option>
                                     @endforeach
                             </select>
-                            <input type="submit" value="Search">
+                            <button class="bg-blue-600 text-white text-sm px-4 py-2 border rounded-full" type="submit" value="Search">Search</button>
                         </form>
                     </div>
 
-                    <x-adminPanel.list-labels :data="$labels" :sortable=true>
+                    <x-adminPanel.list-labels :data="$labels" :sortable=true :statuses="$statuses">
 
                     </x-adminPanel.list-labels>
                 </div>
