@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Imports\packageImport;
 use App\Models\Label;
 use App\Models\Package;
+use App\Imports\UsersImport;
+use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Http\Request;
 
 class PackageController extends Controller
@@ -49,5 +52,12 @@ class PackageController extends Controller
         }
         Package::create(['firstname' => $request->input('firstname'), 'surname' => $request->input('surname'),'email' => $request->input('email'), 'shop' => $webshop]);
         return redirect()->route('adminPanel');
+    }
+
+    public function import()
+    {
+        Excel::import(new packageImport, request()->file('file'));
+
+        return back();
     }
 }

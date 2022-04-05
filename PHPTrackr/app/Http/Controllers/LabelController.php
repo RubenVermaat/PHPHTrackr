@@ -41,7 +41,7 @@ class LabelController extends Controller
         $package = Package::Find($id);
         $package->labelGenerated = true;
         $package->save();
-        Label::create(['packageId' => $package->id, 'shop' => 'Dierenwinkel']);
+        Label::create(['packageId' => $package->id]);
         return redirect()->route('adminPanel');
     }
 

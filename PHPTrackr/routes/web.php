@@ -63,6 +63,10 @@ Route::middleware(['employeeWrite'])->group(function () {
     Route::controller(PackageController::class)->group(function () {
         Route::get('packages/create', 'create')->name('packageCreate');
         Route::post('packages/store', 'store')->name('packageStore');
+        
+    });
+    Route::controller(LabelController::class)->group(function () {
+        Route::get('labels/store/{id}', 'store')->name('packageStore');
     });
 
 });
@@ -71,6 +75,7 @@ Route::middleware(['employeeRead'])->group(function () {
     Route::controller(PackageController::class)->group(function () {
         Route::get('packages/index', 'index')->name('packageIndex');
         Route::any('packages/search', 'search')->name('packageSearch');
+        Route::post('packages/import', 'import')->name('packagesImport');
     });
 
     Route::controller(LabelController::class)->group(function () {

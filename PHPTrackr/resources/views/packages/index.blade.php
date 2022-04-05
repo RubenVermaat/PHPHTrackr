@@ -16,6 +16,12 @@
                             <input type="submit" value="Search">
                         </form>
                     </div>
+                    <form action="{{ route('packagesImport') }}" method="POST" enctype="multipart/form-data">
+                        @csrf
+                        <input type="file" name="file" class="form-control">
+                        <br>
+                        <button class="btn btn-success">Import Packages Data</button>
+                    </form>
                     <a href="/packages/create">Create package </a>
                     <x-adminPanel.list-packages :data="$packages" :sortable="true">
 

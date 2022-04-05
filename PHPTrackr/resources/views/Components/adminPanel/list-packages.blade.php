@@ -46,7 +46,7 @@
                 <td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b text-center block lg:table-cell relative lg:static">
                     <span class="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">Actions</span>
                     @if ($package->labelGenerated == false)
-                        <a href="/labels/create/{{ $package->id }}" class="text-blue-400 hover:text-blue-600 underline">Generate label</a>
+                        <a href="/labels/store/{{ $package->id }}" class="text-blue-400 hover:text-blue-600 underline">Generate label</a>
                     @endif
                 </td>
             </tr>
