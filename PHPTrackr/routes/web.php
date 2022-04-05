@@ -86,6 +86,7 @@ Route::get('/', function () {
 // all pages for recievers
 Route::middleware(['receiver'])->group(function () {
     Route::get('customerview', [CustomerViewController::class, 'index'])->name('customerview');
+    Route::get('customerview/review', [CustomerViewController::class, 'show'])->name('customerreview');
 });
 Route::get('/dashboard', function () {
     return view('dashboard');
