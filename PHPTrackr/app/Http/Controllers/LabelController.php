@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Label;
 use App\Models\Package;
 use Illuminate\Http\Request;
+use PDF;
 
 class LabelController extends Controller
 {
@@ -34,8 +35,6 @@ class LabelController extends Controller
 
     public function show($id)
     {
-        $label = Label::find($id);
-        //return view('labels.create', $label);
     }
 
     public function store($id)
@@ -46,4 +45,15 @@ class LabelController extends Controller
         Label::create(['packageId' => $package->id, 'shop' => 'Dierenwinkel']);
         return redirect()->route('adminPanel');
     }
+
+    public function exportPDF($id)
+    {
+        $label = Label::find($id);
+        $package = Package::where('id', '=', $label->packageId)->get();
+        view()->share('p', $label);
+        $pdf_doc = PDF::loadView('labels/pdf', ['label' => $label, 'package' => $package]);
+
+        return $pdf_doc->download('pdf.pdf');
+        //return view('labels.pdf', ['label' => $label, 'package' => $package]); converting to page for editing ease
+    }  
 }
