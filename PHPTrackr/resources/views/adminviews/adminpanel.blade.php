@@ -11,11 +11,15 @@
                     <x-adminPanel.list-packages :data="$packages" :sortable=false>
 
                     </x-adminPanel.list-packages>
-                    <a href="/packages/index">All packages </a> <a href="/packages/create">Create package </a>
+                    <div class="mb-5 mt-5">
+                        <a href="/packages/index" class="mb-3 bg-blue-600 text-white text-sm px-4 py-2 border rounded-full">All packages </a> <a href="/packages/create" class="bg-blue-600 text-white text-sm px-4 py-2 border rounded-full">Create package </a>
+                    </div>
                     <x-adminPanel.list-labels :data="$labels" :sortable=false>
 
                     </x-adminPanel.list-labels>
-                    <a href="/labels/index">All labels </a>
+                    <div class="mt-3"> 
+                        <a href="/labels/index"  class="bg-blue-600 text-white text-sm px-4 py-2 border rounded-full">All labels </a>
+                    </div>
                 </div>
             </div>
         </div>

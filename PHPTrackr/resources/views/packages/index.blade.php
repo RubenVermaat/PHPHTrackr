@@ -13,16 +13,15 @@
                         <form method="POST" action="{{ route('packageSearch') }}" > 
                             @csrf
                             <x-input name="search" placeholder="Search" class="border-gray-200 border h-10 px-5 pr-10 rounded-full text-sm focus:outline-none"></x-input>
-                            <input type="submit" value="Search">
+                            <button class="bg-blue-600 text-white text-sm px-4 py-2 border rounded-full" type="submit" value="Search">Search</button>
                         </form>
                     </div>
-                    <form action="{{ route('packagesImport') }}" method="POST" enctype="multipart/form-data">
+                    <form class="mb-3" action="{{ route('packagesImport') }}" method="POST" enctype="multipart/form-data">
                         @csrf
-                        <input type="file" name="file" class="form-control">
-                        <br>
-                        <button class="btn btn-success">Import Packages Data</button>
+                        <input type="file" name="file" class="form-control"><button  class="bg-blue-600 text-white text-sm px-4 py-2 border rounded-full">Import Packages Data</button>
+                        <a class="bg-blue-600 text-white text-sm px-4 py-2 border rounded-full" href="/packages/create">Create package </a>
                     </form>
-                    <a href="/packages/create">Create package </a>
+                    
                     <form action="{{ route('labelsBulkStore')}}" method="POST"> 
                         @csrf
                         <x-adminPanel.list-packages :data="$packages" :sortable="true">
