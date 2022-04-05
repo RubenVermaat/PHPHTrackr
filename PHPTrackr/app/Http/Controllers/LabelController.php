@@ -82,5 +82,16 @@ class LabelController extends Controller
 
         return $pdf_doc->download('pdf.pdf');
         //return view('labels.pdf', ['label' => $label, 'package' => $package, 'deliveryInfo' => $deliveryInfo]);// converting to page for editing ease
-    }  
+    }
+
+    public function updateStatus(Request $request)
+    {
+        $label = Label::find($request->input('id'));
+        $label->status = $request->input('status');
+        $label->save();
+        
+        $statuses = Status::pluck('name');
+        $labels = Label::sortable()->paginate(10);
+        return view('/labels.index', ['labels' => $labels, 'statuses' => $statuses]);
+    }
 }

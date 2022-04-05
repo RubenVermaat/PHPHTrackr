@@ -27,9 +27,19 @@
                     <span class="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">Country</span>
                     {{ $label->packageId }}
                 </td>
-                <td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b text-center block lg:table-cell relative lg:static">
+                <td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b text-center block lg:table-cell relative lg:static" style="display: flex; justify-content: space-around; align-items: center;">
                     <span class="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">Status</span>
-                    <span class="rounded bg-red-400 py-1 px-3 text-xs font-bold">{{ $label->status }}</span>
+                    <span class="rounded @if($label->status == "Aangemeld")bg-red-400 @elseif($label->status == "Afgeleverd")bg-green-400 @else bg-blue-400 @endif  py-1 px-3 text-xs font-bold">{{ $label->status }}</span>
+                    <form id="statusForm" method="POST" action="/labels/update">
+                        @csrf
+                        <input name="id" value="{{ $label->id }}" type="hidden">
+                        <select name="status"  class="border-gray-200 border h-10 px-5 pr-10 rounded-full text-sm focus:outline-none">
+                                @foreach($statuses as $status)
+                                    <option value="{{ $status }}">{{ $status }}</option>
+                                @endforeach
+                        </select>
+                        <button type="submit" name="submit">update</button>
+                    </form>
                 </td>
                 <td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b text-center block lg:table-cell relative lg:static">
                     <span class="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">Actions</span>

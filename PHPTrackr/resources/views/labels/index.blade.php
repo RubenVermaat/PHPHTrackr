@@ -22,7 +22,7 @@
                         </form>
                     </div>
 
-                    <x-adminPanel.list-labels :data="$labels" :sortable=true>
+                    <x-adminPanel.list-labels :data="$labels" :sortable=true :statuses="$statuses">
 
                     </x-adminPanel.list-labels>
                 </div>
