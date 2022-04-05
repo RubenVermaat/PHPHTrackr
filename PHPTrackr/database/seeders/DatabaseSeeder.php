@@ -22,7 +22,8 @@ class DatabaseSeeder extends Seeder
             RoleSeeder::class,
             UserSeeder::class,
             PackageSeeder::class,
-            LabelSeeder::class
+            LabelSeeder::class,
+            ReviewSeeder::class,
         ]);
     }
 }

@@ -22,7 +22,7 @@ class RegisteredAdminController extends Controller
      */
     public function create()
     {
-        $data = DB::table('roles')->pluck('name');
+        $data = Roles::get('name');
         return view('auth.adminRegister', ['data'=>$data]);
     }
 
